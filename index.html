@@ -57,66 +57,55 @@ button{font:inherit}.country{border:2px solid #ddd3c3;background:white;border-ra
 </main></div>
 
 <script>
-const API_URL="https://script.google.com/macros/s/AKfycbw8JusG2rAaxEgyrUtQnHxrOCQdNo3d3lKPlppk057vNB6WPw5lHyaO8zrYDWkj_8aQ/exec";
 const WA_NUMBER="524772842484";
-const countries=[["corea","🇰🇷","Corea"],["francia","🇫🇷","Francia"],["rusia","🇷🇺","Rusia"],["italia","🇮🇹","Italia"],["argentina","🇦🇷","Argentina"],["mexico","🇲🇽","México"]];
-const key="cumple28_pais";
-let taken={};
+
+const countries=[
+  ["corea","🇰🇷","Corea"],
+  ["francia","🇫🇷","Francia"],
+  ["rusia","🇷🇺","Rusia"],
+  ["italia","🇮🇹","Italia"],
+  ["argentina","🇦🇷","Argentina"],
+  ["mexico","🇲🇽","México"]
+];
 
 function render(){
- const box=document.getElementById("countries");box.innerHTML="";
- const mine=localStorage.getItem(key);
- countries.forEach(([id,flag,name])=>{
-   const b=document.createElement("button");b.className="country";
-   b.innerHTML=`<span class="flag">${flag}</span><span class="name">${name}</span>`;
-   if(taken[id]){b.disabled=true;b.classList.add("taken");}
-   if(mine===id)b.classList.add("mine");
-   b.onclick=()=>reserve(id,name);
-   box.appendChild(b);
- });
- if(mine){
-   const c=countries.find(x=>x[0]===mine);
-   document.getElementById("status").textContent=`✅ Tu elección es ${c[1]} ${c[2]}. ¡País reservado!`;
-   document.querySelectorAll(".country").forEach(b=>b.disabled=true);
- }else document.getElementById("status").textContent="Selecciona un país para reservarlo.";
+  const box=document.getElementById("countries");
+  box.innerHTML="";
+
+  countries.forEach(([id,flag,name])=>{
+    const b=document.createElement("button");
+    b.className="country";
+
+    b.innerHTML=`
+      <span class="flag">${flag}</span>
+      <span class="name">${name}</span>
+    `;
+
+    b.onclick=()=>reserve(id,flag,name);
+    box.appendChild(b);
+  });
 }
 
-async function load(){
- if(API_URL.includes("PEGA_AQUI")){render();return;}
- try{const r=await fetch(API_URL+"?action=list",{cache:"no-store"});taken=await r.json();render();}
- catch(e){document.getElementById("status").textContent="No se pudo conectar con las reservas.";render();}
+function reserve(id,flag,name){
+  const msg=`Hola, quiero representar a ${name} ${flag} en tu 28° cumpleaños 🎂🌎`;
+
+  window.open(
+    "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg),
+    "_blank"
+  );
 }
-async function reserve(id,name){
-  if(localStorage.getItem(key)||taken[id])return;
 
-  document.getElementById("status").textContent="Reservando "+name+"...";
-
-  try{
-    const r=await fetch(API_URL+"?country="+encodeURIComponent(id),{
-      cache:"no-store"
-    });
-
-    const d=await r.json();
-
-    if(d.ok){
-      localStorage.setItem(key,id);
-      taken[id]=true;
-      render();
-    }else{
-      taken=d.taken||taken;
-      render();
-      alert("Ese país acaba de ser elegido por otra persona. Escoge otro 🌎");
-    }
-
-  }catch(e){
-    document.getElementById("status").textContent="No se pudo guardar. Intenta de nuevo.";
-  }
-}
 document.getElementById("whatsapp").onclick=e=>{
- e.preventDefault();
- const msg="Hola, confirmo mi asistencia a tu 28° cumpleaños 🎂";
- window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
+  e.preventDefault();
+
+  const msg="Hola, confirmo mi asistencia a tu 28° cumpleaños 🎂";
+
+  window.open(
+    "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg),
+    "_blank"
+  );
 };
-load();setInterval(load,10000);
+
+render();
 </script>
 </body></html>
