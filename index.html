@@ -87,14 +87,55 @@ async function load(){
  catch(e){document.getElementById("status").textContent="No se pudo conectar con las reservas.";render();}
 }
 async function reserve(id,name){
- if(localStorage.getItem(key)||taken[id])return;
- document.getElementById("status").textContent="Reservando "+name+"...";
- try{
-  const r=await fetch(API_URL,{method:"POST",body:JSON.stringify({country:id})});
-  const d=await r.json();
-  if(d.ok){localStorage.setItem(key,id);taken[id]=true;render();}
-  else{taken=d.taken||taken;render();alert("Ese país acaba de ser elegido por otra persona. Escoge otro 🌎");}
- }catch(e){document.getElementById("status").textContent="No se pudo guardar. Intenta de nuevo.";}
+
+  if(localStorage.getItem(key) || taken[id]) {
+    return;
+  }
+
+  document.getElementById("status").textContent =
+    "Reservando " + name + "...";
+
+  try {
+
+    const r = await fetch(
+      API_URL + "?country=" + encodeURIComponent(id) + "&t=" + Date.now(),
+      {
+        cache: "no-store"
+      }
+    );
+
+    const d = await r.json();
+
+    if(d.ok){
+
+      localStorage.setItem(key,id);
+
+      taken = d.taken || taken;
+
+      taken[id] = true;
+
+      render();
+
+    } else {
+
+      taken = d.taken || taken;
+
+      render();
+
+      alert(
+        "Ese país acaba de ser elegido por otra persona. Escoge otro 🌎"
+      );
+
+    }
+
+  } catch(e) {
+
+    console.error(e);
+
+    document.getElementById("status").textContent =
+      "No se pudo guardar. Intenta de nuevo.";
+
+  }
 }
 document.getElementById("whatsapp").onclick=e=>{
  e.preventDefault();
