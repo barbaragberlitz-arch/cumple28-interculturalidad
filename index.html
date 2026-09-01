@@ -463,6 +463,55 @@ async function load(){
         }
       );
 
+    if(!response.ok){
+      throw new Error(
+        "Error HTTP "+response.status
+      );
+    }
+
+    taken = await response.json();
+
+    /*
+     * Comprobar si el país que este navegador
+     * recuerda como elegido sigue realmente ocupado.
+     *
+     * Si Google Sheets dice que ya está LIBRE,
+     * eliminamos la elección guardada localmente.
+     */
+
+    const mine = localStorage.getItem(key);
+
+    if(mine && !taken[mine]){
+      localStorage.removeItem(key);
+    }
+
+    render();
+
+  }catch(error){
+
+    console.error(error);
+
+    document
+      .getElementById("status")
+      .textContent =
+      "No se pudo conectar con las reservas.";
+
+    render();
+
+  }
+
+}
+
+  try{
+
+    const response =
+      await fetch(
+        API_URL,
+        {
+          cache:"no-store"
+        }
+      );
+
 
     if(!response.ok){
 
