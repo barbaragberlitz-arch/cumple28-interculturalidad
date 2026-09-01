@@ -1,693 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1"
->
-
-<title>
-28° Cumpleaños | Interculturalidad
-</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>28° Cumpleaños | Interculturalidad</title>
 <style>
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;600;700&display=swap');
-
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  background:#f6f0e5;
-  color:#252525;
-  font-family:Poppins,sans-serif;
-}
-
-.wrap{
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  padding:22px;
-  position:relative;
-  overflow:hidden;
-}
-
-.card{
-  width:min(880px,100%);
-  background:#fffdf9;
-  border-radius:30px;
-  padding:38px 24px;
-  text-align:center;
-  box-shadow:0 18px 55px #0002;
-}
-
-h1,h2{
-  font-family:"Playfair Display",serif;
-}
-
-h1{
-  font-size:clamp(44px,9vw,78px);
-  margin:5px 0;
-}
-
-h2{
-  font-size:31px;
-  margin:10px 0 15px;
-}
-
-.eyebrow{
-  text-transform:uppercase;
-  letter-spacing:4px;
-  font-weight:700;
-  font-size:12px;
-}
-
-.sub{
-  font-size:17px;
-}
-
-.details{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin:25px 0 10px;
-}
-
-.detail{
-  background:#f2ece1;
-  border-radius:16px;
-  padding:14px;
-}
-
-.detail b{
-  display:block;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.detail.full{
-  grid-column:1/-1;
-}
-
-section{
-  border-top:1px solid #ddd3c3;
-  margin-top:28px;
-  padding-top:26px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:13px;
-  margin-top:18px;
-}
-
-button{
-  font:inherit;
-}
-
-.country{
-  border:2px solid #ddd3c3;
-  background:white;
-  border-radius:18px;
-  padding:17px 8px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.country:hover:not(:disabled){
-  transform:translateY(-3px);
-  box-shadow:0 8px 20px #0001;
-}
-
-.flag{
-  font-size:37px;
-  display:block;
-}
-
-.name{
-  font-weight:700;
-}
-
-.country.taken{
-  opacity:.38;
-  cursor:not-allowed;
-}
-
-.country.mine{
-  border-color:#222;
-  background:#eee7da;
-}
-
-#status{
-  min-height:45px;
-  margin-top:18px;
-  font-weight:600;
-}
-
-.note{
-  font-size:12px;
-  color:#666;
-}
-
-.confirm{
-  display:inline-block;
-  background:#252525;
-  color:#fff;
-  text-decoration:none;
-  padding:13px 22px;
-  border-radius:999px;
-  font-weight:700;
-  margin-top:12px;
-}
-
-@media(max-width:600px){
-
-  .details{
-    grid-template-columns:1fr;
-  }
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .card{
-    padding:30px 17px;
-  }
-
-}
-
+*{box-sizing:border-box}body{margin:0;background:#f6f0e5;color:#252525;font-family:Poppins,sans-serif}
+.wrap{min-height:100vh;display:grid;place-items:center;padding:22px;position:relative;overflow:hidden}
+.card{width:min(880px,100%);background:#fffdf9;border-radius:30px;padding:38px 24px;text-align:center;box-shadow:0 18px 55px #0002}
+h1,h2{font-family:"Playfair Display",serif}h1{font-size:clamp(44px,9vw,78px);margin:5px 0}h2{font-size:31px;margin:10px 0 15px}
+.eyebrow{text-transform:uppercase;letter-spacing:4px;font-weight:700;font-size:12px}
+.sub{font-size:17px}.details{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:25px 0 10px}
+.detail{background:#f2ece1;border-radius:16px;padding:14px}.detail b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.detail.full{grid-column:1/-1}
+section{border-top:1px solid #ddd3c3;margin-top:28px;padding-top:26px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:18px}
+button{font:inherit}.country{border:2px solid #ddd3c3;background:white;border-radius:18px;padding:17px 8px;cursor:pointer;transition:.2s}
+.country:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 8px 20px #0001}.flag{font-size:37px;display:block}.name{font-weight:700}
+.country.taken{opacity:.38;cursor:not-allowed}.country.mine{border-color:#222;background:#eee7da}
+#status{min-height:45px;margin-top:18px;font-weight:600}.note{font-size:12px;color:#666}
+.confirm{display:inline-block;background:#252525;color:#fff;text-decoration:none;padding:13px 22px;border-radius:999px;font-weight:700;margin-top:12px}
+@media(max-width:600px){.details{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.card{padding:30px 17px}}
 </style>
-
 </head>
-
-
 <body>
-
-<div class="wrap">
-
-<main class="card">
-
-<div class="eyebrow">
-Estás invitado
-</div>
-
-<h1>
-28° Cumpleaños
-</h1>
-
-<h2>
-🌎 INTERCULTURALIDAD ✈️
-</h2>
-
-<p class="sub">
-Una celebración para viajar por el mundo sin salir de la fiesta.
-</p>
-
+<div class="wrap"><main class="card">
+<div class="eyebrow">Estás invitado</div>
+<h1>28° Cumpleaños</h1>
+<h2>🌎 INTERCULTURALIDAD ✈️</h2>
+<p class="sub">Una celebración para viajar por el mundo sin salir de la fiesta.</p>
 
 <div class="details">
-
-<div class="detail">
-<b>Fecha</b>
-28 de noviembre
+<div class="detail"><b>Fecha</b>28 de noviembre</div>
+<div class="detail"><b>Hora</b>5:00 p. m.</div>
+<div class="detail"><b>Lugar</b>Hacienda de Cobos #103</div>
+<div class="detail full"><b>Dirección</b>Haciendas de León</div>
 </div>
-
-<div class="detail">
-<b>Hora</b>
-5:00 p. m.
-</div>
-
-<div class="detail">
-<b>Lugar</b>
-Hacienda de Cobos #103
-</div>
-
-<div class="detail full">
-<b>Dirección</b>
-Haciendas de León
-</div>
-
-</div>
-
 
 <section>
-
-<h2>
-🌍 Elige tu país
-</h2>
-
-<p>
-Escoge el país que representarás.
-<b>Solo podrás elegir uno.</b>
-</p>
-
-<div
-  id="countries"
-  class="grid"
-></div>
-
-<div id="status">
-Selecciona un país para reservarlo.
-</div>
-
-<p class="note">
-Los países se ocupan para todos los invitados en tiempo real.
-</p>
-
+<h2>🌍 Elige tu país</h2>
+<p>Escoge el país que representarás. <b>Solo podrás elegir uno.</b></p>
+<div id="countries" class="grid"></div>
+<div id="status">Selecciona un país para reservarlo.</div>
+<p class="note">Los países se ocupan para todos los invitados en tiempo real.</p>
 </section>
-
 
 <section>
-
-<h2>
-🎭 Dinámica
-</h2>
-
-<p>
-Ven con algo representativo del país que elijas:
-<b>
-vestimenta, bandera, maquillaje, accesorios
-</b>
-o cualquier detalle creativo.
-</p>
-
-<p>
-<b>
-Favor de confirmar asistencia antes del viernes 20 de noviembre.
-</b>
-</p>
-
-<a
-  class="confirm"
-  href="#"
-  id="whatsapp"
->
-📩 Confirmar asistencia
-</a>
-
+<h2>🎭 Dinámica</h2>
+<p>Ven con algo representativo del país que elijas: <b>vestimenta, bandera, maquillaje, accesorios</b> o cualquier detalle creativo.</p>
+<p><b>Favor de confirmar asistencia antes del viernes 20 de noviembre.</b></p>
+<a class="confirm" href="#" id="whatsapp">📩 Confirmar asistencia</a>
 </section>
 
-
-<p>
-Será un gusto contar con su presencia. 🎂✨
-</p>
-
-</main>
-
-</div>
-
+<p>Será un gusto contar con su presencia. 🎂✨</p>
+</main></div>
 
 <script>
-
-/*
- * URL DE TU GOOGLE APPS SCRIPT
- */
-
-const API_URL =
-"https://script.google.com/macros/s/AKfycbw8JusG2rAaxEgyrUtQnHxrOCQdNo3d3lKPlppk057vNB6WPw5lHyaO8zrYDWkj_8aQ/exec";
-
-
-/*
- * PON AQUÍ TU NÚMERO DE WHATSAPP
- *
- * México = 52 + número
- *
- * Ejemplo:
- * const WA_NUMBER="524771234567";
- */
-
+const API_URL="PEGA_AQUI_LA_URL_DE_TU_APPS_SCRIPT";
 const WA_NUMBER="TU_NUMERO";
-
-
-const countries = [
-
-  ["corea","🇰🇷","Corea"],
-
-  ["francia","🇫🇷","Francia"],
-
-  ["rusia","🇷🇺","Rusia"],
-
-  ["italia","🇮🇹","Italia"],
-
-  ["argentina","🇦🇷","Argentina"],
-
-  ["mexico","🇲🇽","México"]
-
-];
-
-
+const countries=[["corea","🇰🇷","Corea"],["francia","🇫🇷","Francia"],["rusia","🇷🇺","Rusia"],["italia","🇮🇹","Italia"],["argentina","🇦🇷","Argentina"],["mexico","🇲🇽","México"]];
 const key="cumple28_pais";
-
 let taken={};
 
-
-/*
- * Dibujar los botones
- */
-
 function render(){
-
-  const box =
-    document.getElementById("countries");
-
-  box.innerHTML="";
-
-  const mine =
-    localStorage.getItem(key);
-
-
-  countries.forEach(
-    ([id,flag,name]) => {
-
-      const b =
-        document.createElement("button");
-
-      b.className="country";
-
-      b.innerHTML =
-        `<span class="flag">${flag}</span>
-         <span class="name">${name}</span>`;
-
-
-      /*
-       * País ocupado
-       */
-
-      if(taken[id]){
-
-        b.disabled=true;
-
-        b.classList.add("taken");
-
-      }
-
-
-      /*
-       * País elegido por esta persona
-       */
-
-      if(mine===id){
-
-        b.classList.add("mine");
-
-      }
-
-
-      b.onclick =
-        () => reserve(id,name);
-
-
-      box.appendChild(b);
-
-    }
-  );
-
-
-  /*
-   * Si ya eligió país
-   */
-
-  if(mine){
-
-    const c =
-      countries.find(
-        x => x[0]===mine
-      );
-
-
-    document
-      .getElementById("status")
-      .textContent =
-      `✅ Tu elección es ${c[1]} ${c[2]}. ¡País reservado!`;
-
-
-    document
-      .querySelectorAll(".country")
-      .forEach(
-        b => b.disabled=true
-      );
-
-
-  }else{
-
-    document
-      .getElementById("status")
-      .textContent =
-      "Selecciona un país para reservarlo.";
-
-  }
-
+ const box=document.getElementById("countries");box.innerHTML="";
+ const mine=localStorage.getItem(key);
+ countries.forEach(([id,flag,name])=>{
+   const b=document.createElement("button");b.className="country";
+   b.innerHTML=`<span class="flag">${flag}</span><span class="name">${name}</span>`;
+   if(taken[id]){b.disabled=true;b.classList.add("taken");}
+   if(mine===id)b.classList.add("mine");
+   b.onclick=()=>reserve(id,name);
+   box.appendChild(b);
+ });
+ if(mine){
+   const c=countries.find(x=>x[0]===mine);
+   document.getElementById("status").textContent=`✅ Tu elección es ${c[1]} ${c[2]}. ¡País reservado!`;
+   document.querySelectorAll(".country").forEach(b=>b.disabled=true);
+ }else document.getElementById("status").textContent="Selecciona un país para reservarlo.";
 }
-
-
-/*
- * Cargar países ocupados
- */
 
 async function load(){
-
-  try{
-
-    const response =
-      await fetch(
-        API_URL,
-        {
-          cache:"no-store"
-        }
-      );
-
-    if(!response.ok){
-      throw new Error(
-        "Error HTTP "+response.status
-      );
-    }
-
-    taken = await response.json();
-
-    /*
-     * Comprobar si el país que este navegador
-     * recuerda como elegido sigue realmente ocupado.
-     *
-     * Si Google Sheets dice que ya está LIBRE,
-     * eliminamos la elección guardada localmente.
-     */
-
-    const mine = localStorage.getItem(key);
-
-    if(mine && !taken[mine]){
-      localStorage.removeItem(key);
-    }
-
-    render();
-
-  }catch(error){
-
-    console.error(error);
-
-    document
-      .getElementById("status")
-      .textContent =
-      "No se pudo conectar con las reservas.";
-
-    render();
-
-  }
-
+ if(API_URL.includes("PEGA_AQUI")){render();return;}
+ try{const r=await fetch(API_URL+"?action=list",{cache:"no-store"});taken=await r.json();render();}
+ catch(e){document.getElementById("status").textContent="No se pudo conectar con las reservas.";render();}
 }
-
-  try{
-
-    const response =
-      await fetch(
-        API_URL,
-        {
-          cache:"no-store"
-        }
-      );
-
-
-    if(!response.ok){
-
-      throw new Error(
-        "Error HTTP "+response.status
-      );
-
-    }
-
-
-    taken =
-      await response.json();
-
-
-    render();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    document
-      .getElementById("status")
-      .textContent =
-      "No se pudo conectar con las reservas.";
-
-    render();
-
-  }
-
-}
-
-
-/*
- * Reservar país
- */
-
 async function reserve(id,name){
-
-  if(
-    localStorage.getItem(key) ||
-    taken[id]
-  ){
-
-    return;
-
-  }
-
-
-  document
-    .getElementById("status")
-    .textContent =
-    "Reservando "+name+"...";
-
-
-  try{
-
-    const response =
-      await fetch(
-        API_URL +
-        "?country=" +
-        encodeURIComponent(id) +
-        "&t=" +
-        Date.now(),
-        {
-          cache:"no-store"
-        }
-      );
-
-
-    if(!response.ok){
-
-      throw new Error(
-        "Error HTTP "+response.status
-      );
-
-    }
-
-
-    const data =
-      await response.json();
-
-
-    if(data.ok){
-
-      localStorage.setItem(
-        key,
-        id
-      );
-
-
-      taken =
-        data.taken || taken;
-
-
-      taken[id]=true;
-
-
-      render();
-
-
-    }else{
-
-      taken =
-        data.taken || taken;
-
-
-      render();
-
-
-      alert(
-        data.message ||
-        "Ese país ya fue elegido. Escoge otro 🌎"
-      );
-
-    }
-
-
-  }catch(error){
-
-    console.error(error);
-
-    document
-      .getElementById("status")
-      .textContent =
-      "No se pudo guardar. Intenta de nuevo.";
-
-  }
-
+ if(localStorage.getItem(key)||taken[id])return;
+ document.getElementById("status").textContent="Reservando "+name+"...";
+ try{
+  const r=await fetch(API_URL,{method:"POST",body:JSON.stringify({country:id})});
+  const d=await r.json();
+  if(d.ok){localStorage.setItem(key,id);taken[id]=true;render();}
+  else{taken=d.taken||taken;render();alert("Ese país acaba de ser elegido por otra persona. Escoge otro 🌎");}
+ }catch(e){document.getElementById("status").textContent="No se pudo guardar. Intenta de nuevo.";}
 }
-
-
-/*
- * WhatsApp
- */
-
-document
-  .getElementById("whatsapp")
-  .onclick = e => {
-
-    e.preventDefault();
-
-
-    const msg =
-      "Hola, confirmo mi asistencia a tu 28° cumpleaños 🎂";
-
-
-    window.open(
-      "https://wa.me/" +
-      WA_NUMBER +
-      "?text=" +
-      encodeURIComponent(msg),
-      "_blank"
-    );
-
-  };
-
-
-/*
- * Iniciar
- */
-
-load();
-
-
-/*
- * Actualizar disponibilidad cada 10 segundos
- */
-
-setInterval(
-  load,
-  10000
-);
-
+document.getElementById("whatsapp").onclick=e=>{
+ e.preventDefault();
+ const msg="Hola, confirmo mi asistencia a tu 28° cumpleaños 🎂";
+ window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
+};
+load();setInterval(load,10000);
 </script>
-
-</body>
-
-</html>
+</body></html>
